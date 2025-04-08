@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RTController;
+use App\Http\Controllers\DusunController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('layout.header');
+// });
+
+Route::resource('/', AdminController::class);
+Route::resource('/rt', RTController::class);
+Route::resource('/dusun', DusunController::class);
