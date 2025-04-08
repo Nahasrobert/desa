@@ -11,6 +11,7 @@ class CreateSistemDesaTables extends Migration
         Schema::create('dusuns', function (Blueprint $table) {
             $table->uuid('dusun_id')->primary();
             $table->string('nama_dusun', 100);
+            $table->timestamps();
         });
 
         Schema::create('rws', function (Blueprint $table) {
@@ -18,6 +19,7 @@ class CreateSistemDesaTables extends Migration
             $table->uuid('dusun_id');
             $table->string('nomor_rw', 10);
             $table->foreign('dusun_id')->references('dusun_id')->on('dusuns')->onDelete('cascade');
+            $table->timestamps();
         });
 
         Schema::create('rts', function (Blueprint $table) {
@@ -25,6 +27,7 @@ class CreateSistemDesaTables extends Migration
             $table->uuid('rw_id');
             $table->string('nomor_rt', 10);
             $table->foreign('rw_id')->references('rw_id')->on('rws')->onDelete('cascade');
+            $table->timestamps();
         });
 
         Schema::create('kepala_keluargas', function (Blueprint $table) {
@@ -34,6 +37,7 @@ class CreateSistemDesaTables extends Migration
             $table->string('no_kk', 20)->unique();
             $table->text('alamat');
             $table->foreign('rt_id')->references('rt_id')->on('rts')->onDelete('cascade');
+            $table->timestamps();
         });
 
         Schema::create('penduduks', function (Blueprint $table) {
@@ -47,6 +51,7 @@ class CreateSistemDesaTables extends Migration
             $table->string('agama', 50)->nullable();
             $table->string('pekerjaan', 100)->nullable();
             $table->foreign('kk_id')->references('kk_id')->on('kepala_keluargas')->onDelete('cascade');
+            $table->timestamps();
         });
 
         Schema::create('pegawais', function (Blueprint $table) {
@@ -56,6 +61,7 @@ class CreateSistemDesaTables extends Migration
             $table->string('jabatan', 100);
             $table->string('email', 100)->unique()->nullable();
             $table->string('no_hp', 20)->nullable();
+            $table->timestamps();
         });
 
         Schema::create('riwayat_jabatans', function (Blueprint $table) {
@@ -65,6 +71,7 @@ class CreateSistemDesaTables extends Migration
             $table->year('tahun_mulai');
             $table->year('tahun_selesai')->nullable();
             $table->foreign('pegawai_id')->references('pegawai_id')->on('pegawais')->onDelete('cascade');
+            $table->timestamps();
         });
 
         Schema::create('surats', function (Blueprint $table) {
@@ -74,6 +81,7 @@ class CreateSistemDesaTables extends Migration
             $table->date('tanggal_pengajuan');
             $table->enum('status', ['Diproses', 'Selesai', 'Ditolak'])->default('Diproses');
             $table->foreign('penduduk_id')->references('penduduk_id')->on('penduduks')->onDelete('cascade');
+            $table->timestamps();
         });
 
         Schema::create('artikels', function (Blueprint $table) {
@@ -84,6 +92,7 @@ class CreateSistemDesaTables extends Migration
             $table->timestamp('tanggal_publikasi')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('gambar', 255);
             $table->foreign('pegawai_id')->references('pegawai_id')->on('pegawais')->onDelete('set null');
+            $table->timestamps();
         });
 
         Schema::create('pengumumans', function (Blueprint $table) {
@@ -94,6 +103,7 @@ class CreateSistemDesaTables extends Migration
             $table->timestamp('tanggal_publikasi')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('gambar', 255);
             $table->foreign('pegawai_id')->references('pegawai_id')->on('pegawais')->onDelete('set null');
+            $table->timestamps();
         });
 
         Schema::create('layanans', function (Blueprint $table) {
@@ -103,6 +113,7 @@ class CreateSistemDesaTables extends Migration
             $table->text('deskripsi');
             $table->string('gambar', 255);
             $table->foreign('pegawai_id')->references('pegawai_id')->on('pegawais')->onDelete('set null');
+            $table->timestamps();
         });
 
         Schema::create('galeris', function (Blueprint $table) {
@@ -111,6 +122,7 @@ class CreateSistemDesaTables extends Migration
             $table->string('judul', 200);
             $table->string('file_path', 255);
             $table->foreign('pegawai_id')->references('pegawai_id')->on('pegawais')->onDelete('set null');
+            $table->timestamps();
         });
 
         Schema::create('profils', function (Blueprint $table) {
@@ -122,6 +134,7 @@ class CreateSistemDesaTables extends Migration
             $table->text('sambutan')->nullable();
             $table->text('sejarah')->nullable();
             $table->foreign('pegawai_id')->references('pegawai_id')->on('pegawais')->onDelete('set null');
+            $table->timestamps();
         });
     }
 
