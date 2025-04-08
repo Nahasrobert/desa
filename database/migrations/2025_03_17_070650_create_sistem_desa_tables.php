@@ -11,6 +11,7 @@ class CreateSistemDesaTables extends Migration
         Schema::create('dusuns', function (Blueprint $table) {
             $table->uuid('dusun_id')->primary();
             $table->string('nama_dusun', 100);
+            $table->timestamps();
         });
 
         Schema::create('rws', function (Blueprint $table) {
@@ -18,6 +19,7 @@ class CreateSistemDesaTables extends Migration
             $table->uuid('dusun_id');
             $table->string('nomor_rw', 10);
             $table->foreign('dusun_id')->references('dusun_id')->on('dusuns')->onDelete('cascade');
+            $table->timestamps();
         });
 
         Schema::create('rts', function (Blueprint $table) {
@@ -25,6 +27,7 @@ class CreateSistemDesaTables extends Migration
             $table->uuid('rw_id');
             $table->string('nomor_rt', 10);
             $table->foreign('rw_id')->references('rw_id')->on('rws')->onDelete('cascade');
+            $table->timestamps();
         });
 
         Schema::create('kepala_keluargas', function (Blueprint $table) {
