@@ -6,9 +6,9 @@
                 <h5>{{ $page }}</h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('rt.store') }}" method="POST">
+                <form action="{{ route('rt.update', $rt->rt_id) }}" method="POST">
                     @csrf
-
+                    @method('PUT')
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -18,8 +18,8 @@
                                     <option value="">-- Pilih RW --</option>
                                     @foreach ($rw as $j)
                                         <option value="{{ $j->rw_id }}"
-                                            {{ old('rw_id') == $j->rw_id ? 'selected' : '' }}>
-                                            {{ $j->nomor_rw }} - {{ $j->nama_dusun }}
+                                            {{ old('rw_id', $rt->rw_id) == $j->rw_id ? 'selected' : '' }}>
+                                            {{ $j->nomor_rw }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -32,8 +32,8 @@
                             <div class="form-group">
                                 <label for="rt">Nomor RT</label>
                                 <input type="text" id="rt" name="nomor_rt"
-                                    class="form-control @error('rt') is-invalid @enderror" value="{{ old('rt') }}"
-                                    placeholder="001">
+                                    class="form-control @error('rt') is-invalid @enderror"
+                                    value="{{ old('rt', $rt->nomor_rt) }}">
                                 @error('rt')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

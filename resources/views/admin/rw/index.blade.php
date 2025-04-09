@@ -9,8 +9,8 @@
                         Olah {{ $page }} dengan benar!
                     </span>
                 </div>
-                <a href="{{ route('rt.create') }}" class="btn btn-primary btn-sm">
-                    <i class="fa fa-plus"></i> Tambah RT
+                <a href="{{ route('rw.create') }}" class="btn btn-primary btn-sm">
+                    <i class="fa fa-plus"></i> Tambah RW
                 </a>
             </div>
             <div class="card-body table-border-style">
@@ -19,30 +19,28 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nomor RT</th>
+                                <th>Nama Dusun</th>
                                 <th>Nomor RW</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($rt as $r)
+                            @foreach ($rw as $w)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $r->nomor_rt }}</td>
-                                    <td>{{ $r->nomor_rw }} - {{ $r->nama_dusun }}</td>
-
+                                    <td>{{ $w->nama_dusun }}</td>
+                                    <td>{{ $w->nomor_rw }}</td>
                                     <td>
-                                        <div class="btn-group" role="group">
-                                            <a href="{{ route('rt.edit', $r->rt_id) }}" class="btn btn-warning btn-sm">
+                                        <div class="btn-group" role="group" aria-label="Aksi">
+                                            <a href="{{ route('rw.edit', $w->rw_id) }}" class="btn btn-warning btn-sm">
                                                 <i class="fa fa-edit"></i> Ubah
                                             </a>
 
-                                            <form action="{{ route('rt.destroy', $r->rt_id) }}" method="POST"
-                                                style="display:inline-block;">
+                                            <form action="{{ route('rw.destroy', $w->rw_id) }}" method="POST"
+                                                onsubmit="return confirm('Yakin hapus?')" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm"
-                                                    onclick="return confirm('Yakin mau hapus data ini?')">
+                                                <button type="submit" class="btn btn-danger btn-sm">
                                                     <i class="fa fa-trash"></i> Hapus
                                                 </button>
                                             </form>
@@ -57,5 +55,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection

@@ -35,7 +35,7 @@ class DusunController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_dusun' => 'required|max:100',
+            'nama_dusun' => 'required|string|max:100|unique:dusuns,nama_dusun',
         ]);
 
         // dd(Str::uuid());
