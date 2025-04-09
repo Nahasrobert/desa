@@ -11,7 +11,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $page = 'Dashboard Admin';
+        return view('admin.index', compact('page'));
     }
 
     /**

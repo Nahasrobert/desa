@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Flat Able - Premium Admin Template by Phoenixcoded</title>
+    <title>{{ $page }}</title>
     <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 11]>
@@ -67,7 +67,7 @@
                         <label>Navigation</label>
                     </li>
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link "><span class="pcoded-micon"><i
+                        <a href="/" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
                     </li>
 
@@ -75,11 +75,13 @@
                         <label>Olah Data</label>
                     </li>
                     <li class="nav-item pcoded-hasmenu">
-                        <a href="#!" class="nav-link "><span class="pcoded-micon"><i
+                        <a href="#" class="nav-link "><span class="pcoded-micon"><i
                                     class="feather icon-box"></i></span><span class="pcoded-mtext">Data</span></a>
                         <ul class="pcoded-submenu">
+                            <li><a href="/dusun">Dusun</a></li>
+                        </ul>
+                        <ul class="pcoded-submenu">
                             <li><a href="/rt">RT</a></li>
-
                         </ul>
                     </li>
 
@@ -318,8 +320,6 @@
     </header>
     <!-- [ Header ] end -->
 
-
-
     <!-- [ Main Content ] start -->
     <div class="pcoded-main-container">
         <div class="pcoded-content">
@@ -332,8 +332,8 @@
                                 {{-- <h5 class="m-b-10"> {{ $page }}</h5> --}}
                             </div>
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html"><i
-                                            class="feather icon-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a>
+                                </li>
                                 <li class="breadcrumb-item"><a href="#!"> {{ $page }}</a></li>
                             </ul>
                         </div>
