@@ -8,7 +8,6 @@
             <div class="card-body">
 
                 <div class="row">
-
                     <div class="col-md-12">
                         <form action="{{ isset($dusun) ? route('dusun.update', $dusun->dusun_id) : route('dusun.store') }}"
                             method="POST">
@@ -19,16 +18,21 @@
 
                             <div class="form-group">
                                 <label>Nama Dusun</label>
-                                <input type="text" name="nama_dusun" class="form-control"
+                                <input type="text" name="nama_dusun"
+                                    class="form-control @error('nama_dusun') is-invalid @enderror"
                                     value="{{ old('nama_dusun', $dusun->nama_dusun ?? '') }}" required>
+                                @error('nama_dusun')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
-                            <button type="submit"s
+                            <button type="submit"
                                 class="btn btn-success mt-2">{{ isset($dusun) ? 'Update' : 'Simpan' }}</button>
                         </form>
                     </div>
                 </div>
 
-
             </div>
-        @endsection
+        </div>
+    </div>
+@endsection

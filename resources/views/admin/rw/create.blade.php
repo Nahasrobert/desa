@@ -6,35 +6,35 @@
                 <h5>{{ $page }}</h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('rt.store') }}" method="POST">
+                <form action="{{ route('rw.store') }}" method="POST">
                     @csrf
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="NRW">Nomor RW</label>
-                                <select class="form-control @error('rw_id') is-invalid @enderror" id="NRW"
-                                    name="rw_id">
-                                    <option value="">-- Pilih RW --</option>
-                                    @foreach ($rw as $j)
-                                        <option value="{{ $j->rw_id }}"
-                                            {{ old('rw_id') == $j->rw_id ? 'selected' : '' }}>
-                                            {{ $j->nomor_rw }} - {{ $j->nama_dusun }}
+                                <label for="NDusun">Nama Dusun</label>
+                                <select class="form-control @error('dusun_id') is-invalid @enderror" id="NDusun"
+                                    name="dusun_id">
+                                    <option value="">-- Pilih Dusun --</option>
+                                    @foreach ($dusun as $g)
+                                        <option value="{{ $g->dusun_id }}"
+                                            {{ old('dusun_id') == $g->dusun_id ? 'selected' : '' }}>
+                                            {{ $g->nama_dusun }}
                                         </option>
                                     @endforeach
                                 </select>
-                                @error('rw_id')
+                                @error('dusun_id')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="rt">Nomor RT</label>
-                                <input type="text" id="rt" name="nomor_rt"
-                                    class="form-control @error('rt') is-invalid @enderror" value="{{ old('rt') }}"
+                                <label for="rw">RW</label>
+                                <input type="text" id="rw" name="nomor_rw"
+                                    class="form-control @error('rw') is-invalid @enderror" value="{{ old('rw') }}"
                                     placeholder="001">
-                                @error('rt')
+                                @error('rw')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>

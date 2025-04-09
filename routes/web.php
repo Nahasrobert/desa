@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RTController;
 use App\Http\Controllers\DusunController;
+use App\Http\Controllers\RWController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,4 +22,5 @@ use App\Http\Controllers\DusunController;
 
 Route::resource('/', AdminController::class);
 Route::resource('/rt', RTController::class);
+Route::resource('/rw', RWController::class);
 Route::resource('/dusun', DusunController::class);
