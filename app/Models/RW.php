@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RT extends Model
+class RW extends Model
 {
     use HasFactory;
-    protected $fillable = ['rt_id', 'rw_id', 'nomor_rt'];
+    protected $fillable = ['rw_id', 'dusun_id', 'nomor_rw'];
     protected $keyType = 'string';
-    protected $primaryKey = 'rt_id';
-    protected $table = 'rts';
+    protected $primaryKey = 'rw_id';
+    protected $table = 'rws';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var string[]
      */
-    protected $guarded = ['rt_id'];
+    protected $guarded = ['rw_id'];
 }

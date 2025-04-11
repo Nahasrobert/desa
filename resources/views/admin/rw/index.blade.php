@@ -9,8 +9,8 @@
                         Olah {{ $page }} dengan benar!
                     </span>
                 </div>
-                <a href="{{ route('dusun.create') }}" class="btn btn-primary btn-sm">
-                    <i class="fa fa-plus"></i> Tambah Dusun
+                <a href="{{ route('rw.create') }}" class="btn btn-primary btn-sm">
+                    <i class="fa fa-plus"></i> Tambah RW
                 </a>
             </div>
             <div class="card-body table-border-style">
@@ -20,22 +20,23 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Dusun</th>
+                                <th>Nomor RW</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($dusun as $d)
+                            @foreach ($rw as $w)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $d->nama_dusun }}</td>
+                                    <td>{{ $w->nama_dusun }}</td>
+                                    <td>{{ $w->nomor_rw }}</td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Aksi">
-                                            <a href="{{ route('dusun.edit', $d->dusun_id) }}"
-                                                class="btn btn-warning btn-sm">
+                                            <a href="{{ route('rw.edit', $w->rw_id) }}" class="btn btn-warning btn-sm">
                                                 <i class="fa fa-edit"></i> Ubah
                                             </a>
 
-                                            <form action="{{ route('dusun.destroy', $d->dusun_id) }}" method="POST"
+                                            <form action="{{ route('rw.destroy', $w->rw_id) }}" method="POST"
                                                 onsubmit="return confirm('Yakin hapus?')" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')

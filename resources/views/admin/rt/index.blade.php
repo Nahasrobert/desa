@@ -15,12 +15,12 @@
             </div>
             <div class="card-body table-border-style">
                 <div class="table-responsive">
-                    <table class="table table-striped">
+                    <table id="Table" class="table table-striped">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama RT</th>
-                                <th>Nama RW</th>
+                                <th>Nomor RT</th>
+                                <th>Nomor RW</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -29,14 +29,16 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $r->nomor_rt }}</td>
-                                    <td>{{ $r->rw_id }}</td>
+                                    <td>{{ $r->nomor_rw }} - {{ $r->nama_dusun }}</td>
+
                                     <td>
                                         <div class="btn-group" role="group">
-                                            <a href="" class="btn btn-warning btn-sm">
+                                            <a href="{{ route('rt.edit', $r->rt_id) }}" class="btn btn-warning btn-sm">
                                                 <i class="fa fa-edit"></i> Ubah
                                             </a>
 
-                                            <form action="" method="POST" style="display:inline-block;">
+                                            <form action="{{ route('rt.destroy', $r->rt_id) }}" method="POST"
+                                                style="display:inline-block;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm"
