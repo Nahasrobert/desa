@@ -32,7 +32,6 @@ class AdminAuthController extends Controller
             Auth::logout();
             return back()->with('error', 'Anda tidak memiliki akses sebagai Admin.');
         }
-
         return back()->with('error', 'Email atau Password salah.');
     }
 

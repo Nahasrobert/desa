@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Flat Able - Premium Admin Template by Phoenixcoded</title>
+    <title>Login Admin</title>
     <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 11]>
@@ -21,6 +21,8 @@
 
     <!-- vendor css -->
     <link rel="stylesheet" href="admin/assets/css/style.css">
+    <!-- SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 </head>
 
 <!-- [ auth-signin ] start -->
@@ -33,11 +35,9 @@
                 <div class="row align-items-center ">
                     <div class="col-md-12">
                         <div class="card-body">
-                            <h4 class="mb-3 f-w-400">Signin</h4>
+                            <h4 class="mb-3 f-w-400">Login Admin</h4>
                             <hr>
-                            @if (session('error'))
-                                <div class="alert alert-danger">{{ session('error') }}</div>
-                            @endif
+
                             <form action="{{ route('adminLoginPost') }}" method="POST">
                                 @csrf
                                 <div class="form-group mb-3">
@@ -52,12 +52,11 @@
                                     <input type="checkbox" class="custom-control-input" id="customCheck1">
                                     <label class="custom-control-label" for="customCheck1">Save credentials.</label>
                                 </div>
-                                <button type="submit" class="btn btn-block btn-primary mb-4">Signin</button>
+                                <button type="submit" class="btn btn-block btn-primary mb-4">Login</button>
                                 <hr>
                                 {{-- <p class="mb-2 text-muted">Forgot password? <a href="auth-reset-password.html"
                                         class="f-w-400">Reset</a></p>
-                                <p class="mb-0 text-muted">Don’t have an account? <a href="auth-signup.html"
-                                        class="f-w-400">Signup</a></p> --}}
+                                <p class="mb-0 text-muted">Don’t have an account? <a href="auth-signup.html" class="f-w-400">Signup</a></p> --}}
                             </form>
                         </div>
                     </div>
@@ -71,7 +70,31 @@
     <script src="admin/assets/js/vendor-all.min.js"></script>
     <script src="admin/assets/js/plugins/bootstrap.min.js"></script>
     <script src="admin/assets/js/pcoded.min.js"></script>
+    <!-- SweetAlert JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
+    <script>
+        @if (session('error'))
+            swal({
+                title: "Error!",
+                text: "{{ session('error') }}",
+                type: "error",
+                confirmButtonText: "OK"
+            });
+        @endif
+        @if (session('success'))
+            <
+            script >
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil',
+                    text: '{{ session('success') }}',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'OK'
+                }); <
+            />
+        @endif
+    </script>
 </body>
 
 </html>
